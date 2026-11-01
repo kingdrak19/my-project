@@ -1,0 +1,298 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#eff5ee">
+  <meta name="description" content="A little collection of moments, and a reminder that you are loved." />
+  <title>All My Love, Always</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      color-scheme: light;
+      --paper: #eff5ee;
+      --ink: #20362e;
+      --muted: #64746b;
+      --red: #d84c3f;
+      --blue: #c8e5e3;
+      --line: rgba(32, 54, 46, .2);
+      --serif: "Playfair Display", Georgia, serif;
+      --sans: "DM Sans", "Segoe UI", sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: var(--sans);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; }
+    .topbar {
+      height: 74px;
+      padding: 0 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .wordmark {
+      font-family: var(--serif);
+      font-size: 19px;
+      font-style: italic;
+    }
+    .topbar-note {
+      color: var(--muted);
+      font-size: 11px;
+      letter-spacing: 1.4px;
+      text-transform: uppercase;
+    }
+
+    .hero {
+      min-height: min(790px, calc(100svh - 74px));
+      padding: 58px 9vw 72px;
+      display: grid;
+      grid-template-columns: minmax(0, .9fr) minmax(330px, .8fr);
+      align-items: center;
+      gap: clamp(42px, 8vw, 130px);
+      overflow: hidden;
+    }
+    .hero-copy { max-width: 570px; animation: rise-in .8s ease-out both; }
+    .eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 0 0 26px;
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+    .eyebrow::before { width: 30px; height: 1px; background: currentColor; content: ""; }
+    h1 {
+      margin: 0;
+      font-family: var(--serif);
+      font-size: clamp(58px, 7.3vw, 106px);
+      font-weight: 500;
+      line-height: .99;
+    }
+    h1 em { color: var(--red); font-weight: 500; }
+    .intro {
+      max-width: 390px;
+      margin: 28px 0 32px;
+      color: var(--muted);
+      font-size: 15px;
+      line-height: 1.8;
+    }
+    .read-link {
+      display: inline-flex;
+      min-height: 48px;
+      align-items: center;
+      gap: 14px;
+      padding: 0 19px;
+      border: 1px solid var(--ink);
+      text-decoration: none;
+      font-size: 12px;
+      font-weight: 600;
+      transition: color .2s ease, background .2s ease, transform .2s ease;
+    }
+    .read-link:hover { transform: translateY(-2px); color: var(--paper); background: var(--ink); }
+    .read-link span { color: var(--red); font-size: 18px; }
+
+    .hero-photo-wrap {
+      position: relative;
+      width: min(100%, 440px);
+      justify-self: center;
+      animation: rise-in .9s .12s ease-out both;
+    }
+    .hero-photo-wrap::before {
+      position: absolute;
+      z-index: 0;
+      top: -18px;
+      right: -18px;
+      bottom: 18px;
+      left: 18px;
+      border: 1px solid var(--red);
+      content: "";
+    }
+    .hero-photo {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      aspect-ratio: 4 / 5;
+      object-fit: cover;
+      background: var(--blue);
+    }
+    .photo-caption {
+      position: absolute;
+      z-index: 2;
+      right: -25px;
+      bottom: 26px;
+      width: 104px;
+      height: 104px;
+      display: grid;
+      place-content: center;
+      border-radius: 50%;
+      background: var(--red);
+      color: #fffaf3;
+      text-align: center;
+      transform: rotate(9deg);
+    }
+    .photo-caption strong { font-family: var(--serif); font-size: 21px; font-weight: 500; }
+    .photo-caption span { margin-top: 2px; font-size: 9px; letter-spacing: 1.5px; text-transform: uppercase; }
+
+    .letter {
+      padding: 104px 9vw 112px;
+      background: var(--blue);
+    }
+    .letter-inner {
+      max-width: 950px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: .65fr 1.35fr;
+      gap: 10vw;
+    }
+    .section-label {
+      margin: 8px 0 0;
+      color: var(--red);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+    }
+    .letter-copy h2, .film-copy h2 {
+      margin: 0 0 24px;
+      font-family: var(--serif);
+      font-size: clamp(36px, 4vw, 54px);
+      font-weight: 500;
+      line-height: 1.12;
+    }
+    .letter-copy p {
+      max-width: 570px;
+      margin: 0 0 15px;
+      color: #435b52;
+      font-size: 15px;
+      line-height: 1.85;
+    }
+    .signoff { padding-top: 12px; color: var(--red); font-family: var(--serif); font-size: 23px; font-style: italic; }
+
+    .film {
+      padding: 104px 9vw 112px;
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(260px, .68fr);
+      align-items: center;
+      gap: clamp(40px, 8vw, 120px);
+    }
+    .film-frame { position: relative; background: #d7e5d9; }
+    .film-frame::before {
+      position: absolute;
+      z-index: -1;
+      top: 14px;
+      left: 14px;
+      width: 100%;
+      height: 100%;
+      background: var(--red);
+      content: "";
+    }
+    video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #25372f; object-fit: contain; }
+    .film-copy .section-label { margin-bottom: 17px; }
+    .film-copy p { margin: 0; color: var(--muted); font-size: 14px; line-height: 1.8; }
+    footer {
+      min-height: 94px;
+      padding: 24px 6vw;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-top: 1px solid var(--line);
+      color: var(--muted);
+      font-size: 11px;
+    }
+    footer span:last-child { color: var(--red); font-family: var(--serif); font-size: 19px; font-style: italic; }
+
+    @keyframes rise-in {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+    @media (max-width: 760px) {
+      .topbar { height: 62px; padding: 0 6vw; }
+      .topbar-note { font-size: 9px; letter-spacing: 1px; }
+      .hero {
+        min-height: auto;
+        padding: 58px 8vw 74px;
+        grid-template-columns: 1fr;
+        gap: 48px;
+      }
+      h1 { font-size: clamp(58px, 14vw, 86px); }
+      .hero-photo-wrap { width: min(82%, 390px); margin-right: 12px; }
+      .photo-caption { right: -30px; width: 88px; height: 88px; }
+      .photo-caption strong { font-size: 18px; }
+      .letter { padding: 76px 8vw 82px; }
+      .letter-inner { grid-template-columns: 1fr; gap: 24px; }
+      .film { padding: 76px 8vw 88px; grid-template-columns: 1fr; gap: 46px; }
+      footer { padding: 22px 8vw; }
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <a class="wordmark" href="#home" aria-label="All my love, always">all my love, always</a>
+    <span class="topbar-note">A little something, just for you</span>
+  </header>
+
+  <main>
+    <section class="hero" id="home" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">A note from my heart</p>
+        <h1 id="page-title">You make<br>the world feel<br><em>like home.</em></h1>
+        <p class="intro">For all the ordinary days you make extraordinary, and every little moment I wish I could keep forever.</p>
+        <a class="read-link" href="#letter">A few words for you <span aria-hidden="true">&#8595;</span></a>
+      </div>
+      <div class="hero-photo-wrap">
+        <img class="hero-photo" src="WhatsApp%20Image%202026-11-01%20at%2022.59.54.jpeg" alt="A favorite moment, kept close" fetchpriority="high">
+        <div class="photo-caption" aria-label="Always and forever"><strong>always</strong><span>and forever</span></div>
+      </div>
+    </section>
+
+    <section class="letter" id="letter" aria-labelledby="letter-title">
+      <div class="letter-inner">
+        <p class="section-label">In case you forget</p>
+        <div class="letter-copy">
+          <h2 id="letter-title">My favorite place<br>is wherever you are.</h2>
+          <p>I love the way you make even the smallest things feel worth remembering. The laughs, the quiet, the just-because moments: they all mean more with you in them.</p>
+          <p>So here is a little piece of us, saved in one place. Keep it for a day when you need a reminder: you are loved, more than words can fit on a page.</p>
+          <div class="signoff">All my love, always.</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="film" aria-labelledby="film-title">
+      <div class="film-frame">
+        <video controls preload="metadata" playsinline poster="WhatsApp%20Image%202026-11-01%20at%2022.59.54.jpeg">
+          <source src="project%20video.mp4" type="video/mp4">
+          Your browser does not support embedded video.
+        </video>
+      </div>
+      <div class="film-copy">
+        <p class="section-label">A moment to replay</p>
+        <h2 id="film-title">Little memories.<br>Big love.</h2>
+        <p>Press play whenever you want to be right back in this moment.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>Made with all my heart</span>
+    <span>you + me</span>
+  </footer>
+</body>
+</html>
